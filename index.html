@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <div id="loginContainer"></div>
+
+    <script type="module">
+      import { initLoginForm } from "./loginForm.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        function handleLogin(form) {
+          const formData = new FormData(form);
+          const username = formData.get("username");
+          const password = formData.get("password");
+
+          console.log(`Username: ${username}, Password: ${password}`);
+          console.log("can probably hide it now");
+          location.reload();
+          // Process the login here, e.g., send the data to the server for authentication
+        }
+
+        function handleCreateNewId() {
+          console.log("Create new id button clicked");
+          // Redirect to the registration page or open a modal for the user to create a new account
+
+          // Assuming you have the new username and password after the registration process
+          return {
+            username: "newUsername",
+            password: "newPassword"
+          };
+        }
+
+        initLoginForm(handleLogin, handleCreateNewId);
+      });
+    </script>
+  </body>
+</html>
